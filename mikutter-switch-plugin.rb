@@ -22,6 +22,7 @@ loop do
 
     puts "Type 'h' to see help."
     loop do
+        print "command> "
         input = gets.chomp
         operation, number = input.split()
         number = number.to_i
