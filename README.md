@@ -2,7 +2,7 @@
 mikutterのプラグインの有効・無効を切り替えるスクリプト
 
 ## Usage
-`./mikutter-switch-plugin.rb`
+`./mikutter-plugin-manager.rb`
 ```
 command> help
 h, help:
