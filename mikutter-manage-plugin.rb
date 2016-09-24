@@ -4,11 +4,13 @@ LENGTH_PREFIX_DISABLE = PREFIX_DISABLE.length
 
 Dir.chdir(Dir.home + "/.mikutter/plugin")
 
-loop do
-
+def get_plugin_arr
     arr_disabled = Dir.glob(PREFIX_DISABLE + "*").select {|f| !File.file?(f)}
     arr_enabled = Dir.glob("*").select {|f| !File.file?(f)} - arr_disabled
+    return [arr_enabled, arr_disabled]
+end
 
+def show_plugins(arr_enabled, arr_disabled)
     puts "Enabled plugins:"
     arr_enabled.each_with_index do |plugin, i|
         printf("%2d %s\n", i, plugin)
@@ -18,6 +20,13 @@ loop do
     arr_disabled.each_with_index do |plugin, i|
         printf("%2d %s\n", i, plugin)
     end
+end
+
+loop do
+
+    arr_enabled, arr_disabled = get_plugin_arr()
+
+    show_plugins(arr_enabled, arr_disabled)
     puts
 
     puts "Type 'h' to see help."
