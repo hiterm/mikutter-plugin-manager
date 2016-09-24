@@ -41,6 +41,8 @@ loop do
         puts "  Enable plugin numberd [plugin number]."
         puts "d, disable [plugin number]:"
         puts "  Disable plugin numberd [plugin number]."
+        puts "s, show:"
+        puts "  Show plugin list."
         puts "q, quit, exit:"
         puts "  Quit this program."
     when "e", "enable"
@@ -59,6 +61,8 @@ loop do
         arr_enabled, arr_disabled = get_plugin_arr()
         show_plugins(arr_enabled, arr_disabled)
         puts
+    when "s", "show"
+        show_plugins(arr_enabled, arr_disabled)
     when "q", "quit", "exit"
         exit
     else
