@@ -15,11 +15,22 @@ puts "Disabled plugins:"
 arr_disabled.each_with_index do |plugin, i|
     printf("%2d %s\n", i, plugin)
 end
+puts
 
+puts "Type 'h' to see help."
 input = gets.chomp
 operation, number = input.split()
 number = number.to_i
 case operation
+when "h", "help"
+    puts "h, help:"
+    puts "  See this help."
+    puts "e, enable [plugin number]"
+    puts "  Enable plugin numberd [plugin number]"
+    puts "d, disable [plugin number]"
+    puts "  Disable plugin numberd [plugin number]"
+    puts "q, quit, exit"
+    puts "  Quit this program"
 when "e", "enable"
     plugin_name = arr_disabled[number]
     File.rename(plugin_name, plugin_name[LENGTH_PREFIX_DISABLE, plugin_name.length - 1])
