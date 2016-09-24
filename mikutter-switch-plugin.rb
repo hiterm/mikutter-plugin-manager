@@ -30,12 +30,12 @@ loop do
         if operation == "h" or operation == "help"
             puts "h, help:"
             puts "  See this help."
-            puts "e, enable [plugin number]"
-            puts "  Enable plugin numberd [plugin number]"
-            puts "d, disable [plugin number]"
-            puts "  Disable plugin numberd [plugin number]"
-            puts "q, quit, exit"
-            puts "  Quit this program"
+            puts "e, enable [plugin number]:"
+            puts "  Enable plugin numberd [plugin number]."
+            puts "d, disable [plugin number]:"
+            puts "  Disable plugin numberd [plugin number]."
+            puts "q, quit, exit:"
+            puts "  Quit this program."
         else
             case operation
             when "e", "enable"
