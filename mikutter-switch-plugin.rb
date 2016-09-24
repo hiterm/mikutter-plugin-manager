@@ -6,8 +6,8 @@ Dir.chdir(Dir.home + "/.mikutter/plugin")
 
 loop do
 
-    arr_disabled = Dir.glob(PREFIX_DISABLE + "*")
-    arr_enabled = Dir.glob("*") - arr_disabled
+    arr_disabled = Dir.glob(PREFIX_DISABLE + "*").select {|f| !File.file?(f)}
+    arr_enabled = Dir.glob("*").select {|f| !File.file?(f)} - arr_disabled
 
     puts "Enabled plugins:"
     arr_enabled.each_with_index do |plugin, i|
