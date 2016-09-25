@@ -4,6 +4,12 @@ LENGTH_PREFIX_DISABLE = PREFIX_DISABLE.length
 
 Dir.chdir(Dir.home + "/.mikutter/plugin")
 
+class String
+  def is_integer?
+    self.to_i.to_s == self
+  end
+end
+
 def get_plugin_arr
     arr_disabled = Dir.glob(PREFIX_DISABLE + "*").select {|f| !File.file?(f)}
     arr_enabled = Dir.glob("*").select {|f| !File.file?(f)} - arr_disabled
