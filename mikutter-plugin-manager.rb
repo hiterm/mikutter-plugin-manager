@@ -37,7 +37,6 @@ loop do
     print "command> "
     input = gets.chomp
     operation, argument = input.split()
-    argument = argument.to_i
 
     case operation
     when "h", "help"
@@ -52,21 +51,31 @@ loop do
         puts "q, quit, exit:"
         puts "  Quit this program."
     when "e", "enable"
-        plugin_name = arr_disabled[argument]
-        File.rename(plugin_name, plugin_name[LENGTH_PREFIX_DISABLE, plugin_name.length - 1])
-        puts "Enabled " + plugin_name[LENGTH_PREFIX_DISABLE, plugin_name.length - 1]
+        if argument.is_integer?
+            argument = argument.to_i
+            plugin_name = arr_disabled[argument]
+            File.rename(plugin_name, plugin_name[LENGTH_PREFIX_DISABLE, plugin_name.length - 1])
+            puts "Enabled " + plugin_name[LENGTH_PREFIX_DISABLE, plugin_name.length - 1]
 
-        arr_enabled, arr_disabled = get_plugin_arr()
-        show_plugins(arr_enabled, arr_disabled)
-        puts
+            arr_enabled, arr_disabled = get_plugin_arr()
+            show_plugins(arr_enabled, arr_disabled)
+            puts
+        else
+            puts "Invalid argument"
+        end
     when "d", "disable"
-        plugin_name = arr_enabled[argument]
-        File.rename(plugin_name, PREFIX_DISABLE + plugin_name)
-        puts "Disabled " + plugin_name
+        if argument.is_integer?
+            argument = argument.to_i
+            plugin_name = arr_enabled[argument]
+            File.rename(plugin_name, PREFIX_DISABLE + plugin_name)
+            puts "Disabled " + plugin_name
 
-        arr_enabled, arr_disabled = get_plugin_arr()
-        show_plugins(arr_enabled, arr_disabled)
-        puts
+            arr_enabled, arr_disabled = get_plugin_arr()
+            show_plugins(arr_enabled, arr_disabled)
+            puts
+        else
+            puts "Invalid argument"
+        end
     when "s", "show"
         show_plugins(arr_enabled, arr_disabled)
     when "q", "quit", "exit"
