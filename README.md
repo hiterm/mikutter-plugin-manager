@@ -16,3 +16,6 @@ s, show:
 q, quit, exit:
   Quit this program.
 ```
+
+## 仕組み
+プラグインのディレクトリをリネームしてるだけ
