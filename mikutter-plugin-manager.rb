@@ -5,9 +5,9 @@ LENGTH_PREFIX_DISABLE = PREFIX_DISABLE.length
 Dir.chdir(Dir.home + "/.mikutter/plugin")
 
 class String
-  def is_integer?
-    self.to_i.to_s == self
-  end
+    def is_integer?
+        self.to_i.to_s == self
+    end
 end
 
 def get_plugin_arr
