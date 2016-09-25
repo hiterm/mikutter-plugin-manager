@@ -37,6 +37,7 @@ loop do
     print "command> "
     input = gets.chomp
     operation, argument = input.split()
+    argument_int = argument.to_i
 
     case operation
     when "h", "help"
@@ -51,9 +52,9 @@ loop do
         puts "q, quit, exit:"
         puts "  Quit this program."
     when "e", "enable"
-        if argument.is_integer?
-            argument = argument.to_i
-            plugin_name = arr_disabled[argument]
+        if argument.is_integer? and 0 <= argument_int \
+                and argument_int < arr_enabled.length
+            plugin_name = arr_disabled[argument_int]
             File.rename(plugin_name, plugin_name[LENGTH_PREFIX_DISABLE, plugin_name.length - 1])
             puts "Enabled " + plugin_name[LENGTH_PREFIX_DISABLE, plugin_name.length - 1]
 
@@ -64,9 +65,9 @@ loop do
             puts "Invalid argument"
         end
     when "d", "disable"
-        if argument.is_integer?
-            argument = argument.to_i
-            plugin_name = arr_enabled[argument]
+        if argument.is_integer? and 0 <= argument_int \
+                and argument_int < arr_disabled.length
+            plugin_name = arr_enabled[argument_int]
             File.rename(plugin_name, PREFIX_DISABLE + plugin_name)
             puts "Disabled " + plugin_name
 
