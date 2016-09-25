@@ -36,8 +36,8 @@ puts "Type 'h' to see help."
 loop do
     print "command> "
     input = gets.chomp
-    operation, number = input.split()
-    number = number.to_i
+    operation, argument = input.split()
+    argument = argument.to_i
 
     case operation
     when "h", "help"
@@ -52,7 +52,7 @@ loop do
         puts "q, quit, exit:"
         puts "  Quit this program."
     when "e", "enable"
-        plugin_name = arr_disabled[number]
+        plugin_name = arr_disabled[argument]
         File.rename(plugin_name, plugin_name[LENGTH_PREFIX_DISABLE, plugin_name.length - 1])
         puts "Enabled " + plugin_name[LENGTH_PREFIX_DISABLE, plugin_name.length - 1]
 
@@ -60,7 +60,7 @@ loop do
         show_plugins(arr_enabled, arr_disabled)
         puts
     when "d", "disable"
-        plugin_name = arr_enabled[number]
+        plugin_name = arr_enabled[argument]
         File.rename(plugin_name, PREFIX_DISABLE + plugin_name)
         puts "Disabled " + plugin_name
 
