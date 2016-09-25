@@ -55,8 +55,10 @@ loop do
         if argument.is_integer? and 0 <= argument_int \
                 and argument_int < arr_enabled.length
             plugin_name = arr_disabled[argument_int]
-            File.rename(plugin_name, plugin_name[LENGTH_PREFIX_DISABLE, plugin_name.length - 1])
-            puts "Enabled " + plugin_name[LENGTH_PREFIX_DISABLE, plugin_name.length - 1]
+            File.rename(plugin_name, \
+                        plugin_name[LENGTH_PREFIX_DISABLE, plugin_name.length - 1])
+            puts "Enabled " \
+                + plugin_name[LENGTH_PREFIX_DISABLE, plugin_name.length - 1]
 
             arr_enabled, arr_disabled = get_plugin_arr()
             show_plugins(arr_enabled, arr_disabled)
