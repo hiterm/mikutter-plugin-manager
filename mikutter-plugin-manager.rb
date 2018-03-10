@@ -53,7 +53,7 @@ loop do
         puts "  Quit this program."
     when "e", "enable"
         if argument.is_integer? and 0 <= argument_int \
-                and argument_int < arr_enabled.length
+                and argument_int < arr_disabled.length
             plugin_name = arr_disabled[argument_int]
             File.rename(plugin_name, \
                         plugin_name[LENGTH_PREFIX_DISABLE, plugin_name.length - 1])
@@ -68,7 +68,7 @@ loop do
         end
     when "d", "disable"
         if argument.is_integer? and 0 <= argument_int \
-                and argument_int < arr_disabled.length
+                and argument_int < arr_enabled.length
             plugin_name = arr_enabled[argument_int]
             File.rename(plugin_name, PREFIX_DISABLE + plugin_name)
             puts "Disabled " + plugin_name
