@@ -59,6 +59,7 @@ loop do
                         plugin_name[LENGTH_PREFIX_DISABLE, plugin_name.length - 1])
             puts "Enabled " \
                 + plugin_name[LENGTH_PREFIX_DISABLE, plugin_name.length - 1]
+            sleep 1
 
             arr_enabled, arr_disabled = get_plugin_arr()
             show_plugins(arr_enabled, arr_disabled)
@@ -72,6 +73,7 @@ loop do
             plugin_name = arr_enabled[argument_int]
             File.rename(plugin_name, PREFIX_DISABLE + plugin_name)
             puts "Disabled " + plugin_name
+            sleep 1
 
             arr_enabled, arr_disabled = get_plugin_arr()
             show_plugins(arr_enabled, arr_disabled)
